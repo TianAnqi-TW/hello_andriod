@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="button_text_1">按钮 1</string>
-    <string name="button_text_2">按钮 2</string>
-    <string name="button_text_3">按钮 3</string>
+    <string name="app_name">安卓练习</string>
+    <string name="button_text">按钮 %1$d</string>
 </resources>

@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">hello_andriod</string>
-    <string name="button_text_1">Button 1</string>
-    <string name="button_text_2">Button 2</string>
-    <string name="button_text_3">Button 3</string>
+    <string name="app_name">Andriod Practice</string>
+    <string name="button_text">Button %1$d</string>
 </resources>
