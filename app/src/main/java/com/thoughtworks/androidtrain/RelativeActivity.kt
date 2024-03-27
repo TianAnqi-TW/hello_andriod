@@ -1,0 +1,13 @@
+package com.thoughtworks.androidtrain
+
+import android.content.Intent
+import android.os.Bundle
+import android.widget.RelativeLayout
+import androidx.appcompat.app.AppCompatActivity
+
+class RelativeActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.relative_layout)
+    }
+}

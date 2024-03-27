@@ -1,5 +1,7 @@
 package com.thoughtworks.androidtrain
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +11,7 @@ import android.widget.LinearLayout
 import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -26,7 +29,17 @@ class MainActivity : AppCompatActivity() {
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
             )
-            button.text = getString(R.string.button_text, i)
+            if (i == 5) {
+                button.text = "relative_layout"
+                // 为按钮添加点击事件处理程序，启动 RelativeActivity
+                button.setOnClickListener {
+                    val intent = Intent(this, RelativeActivity::class.java)
+                    startActivity(intent)
+                }
+            } else {
+                // 其他按钮显示默认的文本
+                button.text = getString(R.string.button_text, i)
+            }
             buttonContainer.addView(button)
         }
     }
