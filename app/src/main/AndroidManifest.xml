@@ -23,6 +23,14 @@
         </activity>
         <activity android:name=".ConstraintActivity" />
         <activity android:name=".LoginActivity" />
+        <activity
+            android:name=".PickContact"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.thoughtworks.androidtrain.CONTACT_ACTION" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
