@@ -1,6 +1,7 @@
 package com.thoughtworks.androidtrain
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -8,9 +9,22 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
+    private val pickContactLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val data: Intent? = result.data
+            val name = data?.getStringExtra("name")
+            val phoneNumber = data?.getStringExtra("phoneNumber")
+            if (!name.isNullOrEmpty() && !phoneNumber.isNullOrEmpty()) {
+                val toastMessage = "Selected contact:\nName: $name\nPhone: $phoneNumber"
+                Toast.makeText(this, toastMessage, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +62,7 @@ class MainActivity : AppCompatActivity() {
                     button.text = "pick_contact"
                     button.setOnClickListener {
                         val intent = Intent("com.thoughtworks.androidtrain.CONTACT_ACTION")
-                        startActivity(intent)
+                        pickContactLauncher.launch(intent)
                     }
                 }
                 else -> {
