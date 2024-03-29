@@ -24,7 +24,7 @@
         <activity android:name=".ConstraintActivity" />
         <activity android:name=".LoginActivity" />
         <activity
-            android:name=".PickContact"
+            android:name=".PickContactActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.thoughtworks.androidtrain.CONTACT_ACTION" />

@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
                 dialog.dismiss() // 关闭对话框
             }
         val dialog = builder.create()
+        dialog.setCanceledOnTouchOutside(true)
         dialog.show()
     }
     @SuppressLint("SetTextI18n")

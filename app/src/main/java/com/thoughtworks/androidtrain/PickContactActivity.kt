@@ -8,7 +8,7 @@ import android.os.Bundle
 import android.provider.ContactsContract
 import androidx.appcompat.app.AppCompatActivity
 
-class PickContact: AppCompatActivity() {
+class PickContactActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.pick_contact)
