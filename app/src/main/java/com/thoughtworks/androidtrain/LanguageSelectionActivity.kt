@@ -11,11 +11,18 @@ class LanguageSelectionActivity : AppCompatActivity() {
         setContentView(R.layout.language_selection_layout)
 
         val btnAndroid = findViewById<Button>(R.id.btnAndroid)
+        val btnJava = findViewById<Button>(R.id.btnJava)
 
         // 设置 Android 按钮点击事件
         btnAndroid.setOnClickListener {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.fragmentLayout, AndroidFragment())
+                .commit()
+        }
+        // 设置 Java 按钮点击事件
+        btnJava.setOnClickListener {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentLayout, JavaFragment())
                 .commit()
         }
         // 默认显示 Android Fragment
