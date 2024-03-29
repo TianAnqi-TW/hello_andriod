@@ -8,33 +8,57 @@ import androidx.recyclerview.widget.RecyclerView
 import com.thoughtworks.androidtrain.data.model.Tweet
 
 class TweetsAdapter(private val tweets: List<Tweet>) :
-    RecyclerView.Adapter<TweetsAdapter.TweetViewHolder>() {
+    RecyclerView.Adapter<RecyclerView.ViewHolder>()  {
 
-    class TweetViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    private val TWEET_VIEW_TYPE = 0
+    private val BOTTOM_VIEW_TYPE = 1
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TweetViewHolder {
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_tweet, parent, false)
-        return TweetViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return when (viewType) {
+            TWEET_VIEW_TYPE -> {
+                val view = LayoutInflater.from(parent.context).inflate(R.layout.item_tweet, parent, false)
+                TweetViewHolder(view)
+            }
+            BOTTOM_VIEW_TYPE -> {
+                val view = LayoutInflater.from(parent.context).inflate(R.layout.item_bottom, parent, false)
+                BottomViewHolder(view)
+            }
+            else -> throw IllegalArgumentException("Invalid view type")
+        }
     }
 
-    override fun onBindViewHolder(holder: TweetViewHolder, position: Int) {
-        val tweet = tweets[position]
-        holder.itemView.apply {
-            // 设置头像
-//            avatarImageView.setImageResource(R.drawable.avatar)
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        if (holder is TweetViewHolder) {
+            val tweet = tweets[position]
+            holder.itemView.apply {
 
-            // 设置昵称
-            val nickTextView = findViewById<TextView>(R.id.nickTextView)
-            nickTextView.text = if (tweet.sender!= null) tweet.sender.nick else ""
+                // 设置昵称
+                val nickTextView = findViewById<TextView>(R.id.nickTextView)
+                nickTextView.text = if (tweet.sender != null) tweet.sender.nick else ""
 
-            // 设置内容
-            val contentTextView = findViewById<TextView>(R.id.contentTextView)
-            contentTextView.text = if (tweet.content!= null) tweet.content else ""
+                // 设置内容
+                val contentTextView = findViewById<TextView>(R.id.contentTextView)
+                contentTextView.text = if (tweet.content != null) tweet.content else ""
+            }
+        } else if (holder is BottomViewHolder) {
+            holder.itemView.apply {
+                // 设置底部文本
+                val bottomTextView = findViewById<TextView>(R.id.bottomTextView)
+                bottomTextView.text = "到底了"
+            }
         }
     }
 
     override fun getItemCount(): Int {
-        return tweets.size
+        // 多返回一个位置用于显示底部项
+        return tweets.size + 1
     }
+
+    override fun getItemViewType(position: Int): Int {
+        // 最后一个位置显示底部项
+        return if (position == tweets.size) BOTTOM_VIEW_TYPE else TWEET_VIEW_TYPE
+    }
+
+    inner class TweetViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    inner class BottomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 }
