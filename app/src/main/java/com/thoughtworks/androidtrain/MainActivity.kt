@@ -28,18 +28,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-    // 显示对话框
-    private fun showDialog(name: String, phoneNumber: String) {
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("Selected contact")
-            .setMessage("Name: $name\nPhone: $phoneNumber")
-            .setPositiveButton("OK") { dialog: DialogInterface, _: Int ->
-                dialog.dismiss() // 关闭对话框
-            }
-        val dialog = builder.create()
-        dialog.setCanceledOnTouchOutside(true)
-        dialog.show()
-    }
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,6 +68,13 @@ class MainActivity : AppCompatActivity() {
                         pickContactLauncher.launch(intent)
                     }
                 }
+                4 -> {
+                    button.text = " fragment"
+                    button.setOnClickListener {
+                        val intent = Intent(this, LanguageSelectionActivity::class.java)
+                        startActivity(intent)
+                    }
+                }
                 else -> {
                     // 其他按钮显示默认的文本
                     button.text = getString(R.string.button_text, i)
@@ -87,5 +82,17 @@ class MainActivity : AppCompatActivity() {
             }
             buttonContainer.addView(button)
         }
+    }
+    // 显示对话框
+    private fun showDialog(name: String, phoneNumber: String) {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Selected contact")
+            .setMessage("Name: $name\nPhone: $phoneNumber")
+            .setPositiveButton("OK") { dialog: DialogInterface, _: Int ->
+                dialog.dismiss() // 关闭对话框
+            }
+        val dialog = builder.create()
+        dialog.setCanceledOnTouchOutside(true)
+        dialog.show()
     }
 }
