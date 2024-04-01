@@ -1,4 +1,4 @@
-package com.thoughtworks.androidtrain
+package com.thoughtworks.androidtrain.tweets
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +7,7 @@ import android.widget.ImageView
 import coil.load
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.thoughtworks.androidtrain.R
 import com.thoughtworks.androidtrain.data.model.Tweet
 
 class TweetsAdapter(private val tweets: List<Tweet>) :

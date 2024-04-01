@@ -13,6 +13,7 @@ import android.widget.Button
 import android.widget.LinearLayout
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.WindowInsetsCompat
+import com.thoughtworks.androidtrain.tweets.TweetsActivity
 
 class MainActivity : AppCompatActivity() {
     private val pickContactLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->

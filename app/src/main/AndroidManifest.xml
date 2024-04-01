@@ -33,7 +33,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".LanguageSelectionActivity" />
-        <activity android:name=".TweetsActivity" />
+        <activity android:name=".tweets.TweetsActivity" />
         <activity android:name=".ThreadActivity" />
     </application>
 

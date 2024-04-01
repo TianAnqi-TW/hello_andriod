@@ -1,10 +1,11 @@
-package com.thoughtworks.androidtrain
+package com.thoughtworks.androidtrain.tweets
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
+import com.thoughtworks.androidtrain.R
 import com.thoughtworks.androidtrain.data.model.Tweet
 import java.io.IOException
 
