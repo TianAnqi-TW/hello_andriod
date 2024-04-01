@@ -82,6 +82,13 @@ class MainActivity : AppCompatActivity() {
                         startActivity(intent)
                     }
                 }
+                6 -> {
+                    button.text = " thread"
+                    button.setOnClickListener {
+                        val intent = Intent(this, ThreadActivity::class.java)
+                        startActivity(intent)
+                    }
+                }
                 else -> {
                     // 其他按钮显示默认的文本
                     button.text = getString(R.string.button_text, i)
