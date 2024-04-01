@@ -7,7 +7,7 @@
     tools:context=".ThreadActivity">
 
     <Button
-        android:id="@+id/centerButton"
+        android:id="@+id/countButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Button"
