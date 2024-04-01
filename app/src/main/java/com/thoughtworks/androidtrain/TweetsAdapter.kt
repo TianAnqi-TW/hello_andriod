@@ -3,6 +3,8 @@ package com.thoughtworks.androidtrain
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import coil.load
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.thoughtworks.androidtrain.data.model.Tweet
@@ -39,6 +41,12 @@ class TweetsAdapter(private val tweets: List<Tweet>) :
                 // 设置内容
                 val contentTextView = findViewById<TextView>(R.id.contentTextView)
                 contentTextView.text = if (tweet.content != null) tweet.content else ""
+
+                // 设置头像
+                val avatarImageView = findViewById<ImageView>(R.id.avatarImageView)
+                tweet.sender?.avatar?.let { avatarUrl ->
+                    avatarImageView.load(avatarUrl)
+                }
             }
         } else if (holder is BottomViewHolder) {
             holder.itemView.apply {
