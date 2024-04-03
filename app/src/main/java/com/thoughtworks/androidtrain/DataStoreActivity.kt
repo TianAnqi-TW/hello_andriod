@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 
-class SharedPreferenceActivity : AppCompatActivity() {
+class DataStoreActivity : AppCompatActivity() {
 
     private lateinit var sharedPreferences: SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {

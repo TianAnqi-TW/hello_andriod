@@ -91,9 +91,9 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
                 7 -> {
-                    button.text = " SharedPreference"
+                    button.text = " DataStore"
                     button.setOnClickListener {
-                        val intent = Intent(this, SharedPreferenceActivity::class.java)
+                        val intent = Intent(this, DataStoreActivity::class.java)
                         startActivity(intent)
                     }
                 }
