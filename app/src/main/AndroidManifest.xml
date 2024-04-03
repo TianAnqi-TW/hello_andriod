@@ -35,6 +35,7 @@
         <activity android:name=".LanguageSelectionActivity" />
         <activity android:name=".tweets.TweetsActivity" />
         <activity android:name=".ThreadActivity" />
+        <activity android:name=".SharedPreferenceActivity" />
     </application>
 
 </manifest>
