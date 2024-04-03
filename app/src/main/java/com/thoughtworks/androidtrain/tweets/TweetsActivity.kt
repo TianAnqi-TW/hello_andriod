@@ -27,9 +27,10 @@ class TweetsActivity : AppCompatActivity() {
     }
     private fun loadTweetsFromJson() {
         try {
-//            val inputStream = assets.open("tweets.json")
             //从raw中读取
-            val inputStream = resources.openRawResource(R.raw.tweets)
+//            val inputStream = resources.openRawResource(R.raw.tweets)
+            //从assets中读取
+            val inputStream = assets.open("tweets.json")
             val size = inputStream.available()
             val buffer = ByteArray(size)
             inputStream.read(buffer)
