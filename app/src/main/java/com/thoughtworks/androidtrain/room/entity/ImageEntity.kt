@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "images")
 data class ImageEntity(
     @PrimaryKey(autoGenerate = true)
-    val id: Long = 0,
-    val url: String
+    val id: Long = 0L,
+    val tweetId: String,
+    val url: String?
 )

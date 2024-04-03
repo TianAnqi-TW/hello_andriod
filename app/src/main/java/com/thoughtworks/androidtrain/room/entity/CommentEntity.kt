@@ -9,5 +9,7 @@ import androidx.room.PrimaryKey
 data class CommentEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0L,
-    val content: String
+    val tweetId: Long,
+    val content: String?,
+    val senderId: Long
 )

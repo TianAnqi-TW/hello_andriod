@@ -6,9 +6,9 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "senders")
 data class SenderEntity(
     @PrimaryKey(autoGenerate = true)
-    val id: Long = 0,
-    val userName: String,
-    val nick: String,
-    val avatar: String
+    val id: Long = 0L,
+    val userName: String?,
+    val nick: String?,
+    val avatar: String?
 )
 
