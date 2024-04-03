@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activitySharedPreference"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SharedPreferenceActivity"
+    >
+
+    <!-- 左侧布局 -->
+    <include
+        android:id="@+id/leftLayout"
+        layout="@layout/left_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- 右侧布局 -->
+    <include
+        android:id="@+id/rightLayout"
+        layout="@layout/right_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+</RelativeLayout>
