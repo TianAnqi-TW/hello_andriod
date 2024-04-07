@@ -6,6 +6,7 @@ import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -13,6 +14,8 @@ import android.widget.Button
 import android.widget.LinearLayout
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.WindowInsetsCompat
+import androidx.room.Room
+import com.thoughtworks.androidtrain.tweets.TweetDataBase
 import com.thoughtworks.androidtrain.tweets.TweetsActivity
 
 class MainActivity : AppCompatActivity() {
@@ -104,6 +107,14 @@ class MainActivity : AppCompatActivity() {
             }
             buttonContainer.addView(button)
         }
+
+        val db = Room.databaseBuilder(
+            applicationContext,
+            TweetDataBase::class.java, "database-tweet"
+        ).build()
+        val tweetDao = db.TweetDao();
+
+
     }
     // 显示对话框
     private fun showDialog(name: String, phoneNumber: String) {
