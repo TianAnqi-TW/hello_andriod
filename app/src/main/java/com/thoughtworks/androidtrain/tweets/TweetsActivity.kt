@@ -10,6 +10,7 @@ import com.thoughtworks.androidtrain.data.model.Tweet
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import android.widget.Toast
 
 class TweetsActivity : AppCompatActivity() {
 
@@ -26,6 +27,9 @@ class TweetsActivity : AppCompatActivity() {
             runOnUiThread {
                 try{
                     val recyclerView = findViewById<RecyclerView>(R.id.tweets_layout)
+                    if(tweetsList == null){
+                        Toast.makeText(this@TweetsActivity, "获取数据失败", Toast.LENGTH_SHORT).show()
+                    }
                     (recyclerView.adapter as TweetsAdapter).updateData(filteredTweets)
                 }catch (e:Exception) {
                     e.printStackTrace()
