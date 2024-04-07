@@ -8,6 +8,7 @@ import com.thoughtworks.androidtrain.datasource.TweetDataSource
 import com.thoughtworks.androidtrain.datasource.impl.DataCacheImpl
 import com.thoughtworks.androidtrain.datasource.impl.RequestBaseFileImpl
 import com.thoughtworks.androidtrain.datasource.impl.RequestBaseOkHttpImpl
+import com.thoughtworks.androidtrain.datasource.impl.RequestBaseRetrofitImpl
 import com.thoughtworks.androidtrain.datasource.impl.TweetDataSourceImpl
 import com.thoughtworks.androidtrain.room.database.CacheDatabase
 
@@ -15,7 +16,7 @@ class MyApplication: Application() {
     lateinit var cacheDatabase: CacheDatabase
     var tweetDataSource: TweetDataSource = TweetDataSourceImpl(this)
     var dataCache: DataCache = DataCacheImpl(this)
-    var requestBase: RequestBase = RequestBaseOkHttpImpl(this)
+    var requestBase: RequestBase = RequestBaseRetrofitImpl(this)
     override fun onCreate() {
         super.onCreate()
 
