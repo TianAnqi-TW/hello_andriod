@@ -10,12 +10,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.thoughtworks.androidtrain.R
 import com.thoughtworks.androidtrain.data.model.Tweet
 
-class TweetsAdapter(private val tweets: List<Tweet>) :
+class TweetsAdapter:
     RecyclerView.Adapter<RecyclerView.ViewHolder>()  {
 
     private val TWEET_VIEW_TYPE = 0
     private val BOTTOM_VIEW_TYPE = 1
 
+    private var tweets:List<Tweet> = ArrayList()
+    fun updateData(newData: List<Tweet>) {
+        tweets = newData
+        notifyDataSetChanged() // 或者使用更精确的通知方法，例如 notifyItemInserted、notifyItemRemoved 等
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
             TWEET_VIEW_TYPE -> {

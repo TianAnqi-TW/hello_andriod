@@ -15,6 +15,8 @@ import android.widget.LinearLayout
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.WindowInsetsCompat
 import androidx.room.Room
+import com.thoughtworks.androidtrain.room.database.CacheDatabase
+import com.thoughtworks.androidtrain.room.entity.CacheEntity
 import com.thoughtworks.androidtrain.tweets.TweetDataBase
 import com.thoughtworks.androidtrain.tweets.TweetsActivity
 
@@ -108,11 +110,6 @@ class MainActivity : AppCompatActivity() {
             buttonContainer.addView(button)
         }
 
-        val db = Room.databaseBuilder(
-            applicationContext,
-            TweetDataBase::class.java, "database-tweet"
-        ).build()
-        val tweetDao = db.TweetDao();
 
 
     }
