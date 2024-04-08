@@ -53,6 +53,9 @@ class TweetsAdapter:
                 tweet.sender?.avatar?.let { avatarUrl ->
                     avatarImageView.load(avatarUrl)
                 }
+                //设置日期
+                val dateView = findViewById<TextView>(R.id.dateTextView)
+                dateView.text = if (tweet.date != null) tweet.date else ""
             }
         } else if (holder is BottomViewHolder) {
             holder.itemView.apply {

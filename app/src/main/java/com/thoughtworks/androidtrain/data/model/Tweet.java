@@ -13,6 +13,8 @@ public class Tweet {
     @SerializedName("unknown error")
     private String unknownError;
 
+    private String date;
+
     public Tweet() {
 
     }
@@ -74,6 +76,14 @@ public class Tweet {
 
     public void setUnknownError(String unknownError) {
         this.unknownError = unknownError;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     @Override

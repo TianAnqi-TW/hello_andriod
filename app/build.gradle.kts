@@ -88,6 +88,7 @@ dependencies {
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
     kapt("androidx.room:room-compiler:2.4.0")
     implementation("androidx.room:room-ktx:2.4.0")
+    implementation("androidx.activity:activity-ktx:1.4.0")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

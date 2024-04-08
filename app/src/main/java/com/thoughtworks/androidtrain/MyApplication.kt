@@ -17,8 +17,14 @@ class MyApplication: Application() {
     var tweetDataSource: TweetDataSource = TweetDataSourceImpl(this)
     var dataCache: DataCache = DataCacheImpl(this)
     var requestBase: RequestBase = RequestBaseRetrofitImpl(this)
+
+    companion object {
+        lateinit var instance: MyApplication
+            private set
+    }
     override fun onCreate() {
         super.onCreate()
+        instance = this
 
         cacheDatabase = Room.databaseBuilder(
             applicationContext,
