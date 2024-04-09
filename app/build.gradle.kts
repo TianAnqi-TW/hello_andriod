@@ -72,6 +72,16 @@ android {
         jvmTarget = "1.8"
     }
 }
+// 定义依赖库的版本
+object Libs {
+    const val gson = "2.10.1"
+    const val coil = "2.6.0"
+    const val datastorePreferences = "1.0.0"
+    const val room = "2.4.0"
+    const val okhttp = "4.9.2"
+    const val retrofit = "2.9.0"
+    const val activityKtx = "1.4.0"
+}
 
 dependencies {
     implementation(libs.androidx.core.ktx)
@@ -79,16 +89,16 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    implementation("com.google.code.gson:gson:2.10.1")
-    implementation("io.coil-kt:coil:2.6.0")
-    implementation("androidx.datastore:datastore-preferences:1.0.0")
-    implementation("androidx.room:room-runtime:2.4.0")
-    implementation("com.squareup.okhttp3:okhttp:4.9.2")
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.google.code.gson:gson:${Libs.gson}")
+    implementation("io.coil-kt:coil:${Libs.coil}")
+    implementation("androidx.datastore:datastore-preferences:${Libs.datastorePreferences}")
+    implementation("androidx.room:room-runtime:${Libs.room}")
+    implementation("com.squareup.okhttp3:okhttp:${Libs.okhttp}")
+    implementation ("com.squareup.retrofit2:retrofit:${Libs.retrofit}")
+    implementation ("com.squareup.retrofit2:converter-gson:${Libs.retrofit}")
     kapt("androidx.room:room-compiler:2.4.0")
-    implementation("androidx.room:room-ktx:2.4.0")
-    implementation("androidx.activity:activity-ktx:1.4.0")
+    implementation("androidx.room:room-ktx:${Libs.room}")
+    implementation("androidx.activity:activity-ktx:${Libs.activityKtx}")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
