@@ -81,6 +81,8 @@ object Libs {
     const val okhttp = "4.9.2"
     const val retrofit = "2.9.0"
     const val activityKtx = "1.4.0"
+    const val mockitoCore = "3.12.4"
+    const val mockitoKotlin = "3.2.0"
 }
 
 dependencies {
@@ -100,6 +102,8 @@ dependencies {
     implementation("androidx.activity:activity-ktx:${Libs.activityKtx}")
     kapt("androidx.room:room-compiler:${Libs.room}")
     testImplementation(libs.junit)
+    testImplementation("org.mockito:mockito-core:${Libs.mockitoCore}")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:${Libs.mockitoKotlin}")
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
