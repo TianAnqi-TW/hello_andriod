@@ -6,7 +6,6 @@ import android.app.AlertDialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -14,11 +13,7 @@ import android.widget.Button
 import android.widget.LinearLayout
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.WindowInsetsCompat
-import androidx.room.Room
-import com.thoughtworks.androidtrain.room.database.CacheDatabase
-import com.thoughtworks.androidtrain.room.entity.CacheEntity
-import com.thoughtworks.androidtrain.tweets.TweetDataBase
-import com.thoughtworks.androidtrain.tweets.TweetsActivity
+import com.thoughtworks.androidtrain.tweet.ui.TweetsActivity
 
 class MainActivity : AppCompatActivity() {
     private val pickContactLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->

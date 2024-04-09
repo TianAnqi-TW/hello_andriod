@@ -2,15 +2,13 @@ package com.thoughtworks.androidtrain
 
 import android.app.Application
 import androidx.room.Room
-import com.thoughtworks.androidtrain.datasource.DataCache
-import com.thoughtworks.androidtrain.datasource.RequestBase
-import com.thoughtworks.androidtrain.datasource.TweetDataSource
-import com.thoughtworks.androidtrain.datasource.impl.DataCacheImpl
-import com.thoughtworks.androidtrain.datasource.impl.RequestBaseFileImpl
-import com.thoughtworks.androidtrain.datasource.impl.RequestBaseOkHttpImpl
-import com.thoughtworks.androidtrain.datasource.impl.RequestBaseRetrofitImpl
-import com.thoughtworks.androidtrain.datasource.impl.TweetDataSourceImpl
-import com.thoughtworks.androidtrain.room.database.CacheDatabase
+import com.thoughtworks.androidtrain.tweet.datasource.DataCache
+import com.thoughtworks.androidtrain.tweet.datasource.RequestBase
+import com.thoughtworks.androidtrain.tweet.datasource.TweetDataSource
+import com.thoughtworks.androidtrain.tweet.datasource.impl.DataCacheImpl
+import com.thoughtworks.androidtrain.tweet.datasource.impl.RequestBaseRetrofitImpl
+import com.thoughtworks.androidtrain.tweet.datasource.impl.TweetDataSourceImpl
+import com.thoughtworks.androidtrain.tweet.room.database.CacheDatabase
 
 class MyApplication: Application() {
     lateinit var cacheDatabase: CacheDatabase
@@ -30,14 +28,5 @@ class MyApplication: Application() {
             applicationContext,
             CacheDatabase::class.java, "database-cache"
         ).build()
-//        var t = Thread{
-//            val cacheDao = cacheDatabase.cacheDao()
-//
-//            val cacheEntity = CacheEntity("TEST", "VALUE"+System.currentTimeMillis())
-//            System.out.println("122222222")
-//            cacheDao.set(cacheEntity)
-//            System.out.println(cacheDao.get("TEST"))
-//        }
-//        t.start()
     }
 }
