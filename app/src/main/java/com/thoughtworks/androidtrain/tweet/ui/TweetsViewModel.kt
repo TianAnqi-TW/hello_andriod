@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 class TweetsViewModel : ViewModel() {
 
     private val _tweets = MutableLiveData<List<Tweet>>()
-    val tweets: LiveData<List<Tweet>> = _tweets
+    var tweets: MutableLiveData<List<Tweet>> = _tweets
 
     private val _errorMessage = MutableLiveData<String>()
     val errorMessage: LiveData<String> = _errorMessage
