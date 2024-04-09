@@ -57,6 +57,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 2 -> {
                     button.text = "login"
+                    button.id = R.id.loginButton
                     button.setOnClickListener {
                         val intent = Intent(this, LoginActivity::class.java)
                         startActivity(intent)
