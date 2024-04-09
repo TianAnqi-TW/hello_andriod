@@ -42,7 +42,7 @@ class TweetsAdapter:
 
                 // 设置昵称
                 val nickTextView = findViewById<TextView>(R.id.nickTextView)
-                nickTextView.text = if (tweet.sender != null) tweet.sender.nick else ""
+                nickTextView.text = if (tweet.sender != null) tweet.sender!!.nick else ""
 
                 // 设置内容
                 val contentTextView = findViewById<TextView>(R.id.contentTextView)
