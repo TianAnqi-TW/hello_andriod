@@ -15,6 +15,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -101,14 +102,14 @@ class ComposeTweetsActivity : ComponentActivity() {
                 // 姓名标题
                 Text(
                     text = tweet.sender?.nick ?: "",
-                    style = TextStyle(fontSize = 18.sp, fontWeight = FontWeight.Bold),
+                    style = TextStyle(fontSize = 18.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.primary),
                     modifier = Modifier.padding(bottom = 8.dp)
                 )
 
                 // 描述内容
                 Text(
                     text = tweet.content ?: "",
-                    style = TextStyle(fontSize = 16.sp),
+                    style = MaterialTheme.typography.bodyLarge,
                     modifier = Modifier.padding(bottom = 8.dp)
                 )
                 // 描述date
