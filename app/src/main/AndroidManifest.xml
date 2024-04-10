@@ -37,6 +37,7 @@
         <activity android:name=".tweet.ui.TweetsActivity" />
         <activity android:name=".ThreadActivity" />
         <activity android:name=".DataStoreActivity" />
+        <activity android:name=".tweet.ui.ComposeTweetsActivity" android:exported="true" />
     </application>
 
 </manifest>

@@ -13,6 +13,7 @@ import android.widget.Button
 import android.widget.LinearLayout
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.WindowInsetsCompat
+import com.thoughtworks.androidtrain.tweet.ui.ComposeTweetsActivity
 import com.thoughtworks.androidtrain.tweet.ui.TweetsActivity
 
 class MainActivity : AppCompatActivity() {
@@ -95,6 +96,13 @@ class MainActivity : AppCompatActivity() {
                     button.text = " DataStore"
                     button.setOnClickListener {
                         val intent = Intent(this, DataStoreActivity::class.java)
+                        startActivity(intent)
+                    }
+                }
+                8 -> {
+                    button.text = " composePractice"
+                    button.setOnClickListener {
+                        val intent = Intent(this, ComposeTweetsActivity::class.java)
                         startActivity(intent)
                     }
                 }
