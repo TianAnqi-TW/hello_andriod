@@ -17,6 +17,9 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -28,15 +31,28 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.thoughtworks.androidtrain.MyApplication
 import com.thoughtworks.androidtrain.R
 import com.thoughtworks.androidtrain.tweet.model.Tweet
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 class ComposeTweetsActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent{
-            TweetsList()
+        setContent {
+            val tweetsState = remember { mutableStateOf<List<Tweet>>(emptyList()) }
+
+            LaunchedEffect(Unit) {
+                // 在后台线程中获取推特列表数据
+                var tweets = withContext(Dispatchers.IO) {
+                    (MyApplication.instance).tweetDataSource.fetchTweets()
+                }
+                tweets = filterTweets(tweets as List<Tweet>)
+                tweetsState.value = tweets
+            }
+            TweetsList(tweetsState.value)
         }
     }
 
@@ -84,14 +100,20 @@ class ComposeTweetsActivity : ComponentActivity() {
             Column {
                 // 姓名标题
                 Text(
-                    text = tweet.sender?.nick ?: "联系人111111111111111111111",
+                    text = tweet.sender?.nick ?: "",
                     style = TextStyle(fontSize = 18.sp, fontWeight = FontWeight.Bold),
                     modifier = Modifier.padding(bottom = 8.dp)
                 )
 
                 // 描述内容
                 Text(
-                    text = tweet.content ?: "内容11111111111111111111111111111111111111111111111",
+                    text = tweet.content ?: "",
+                    style = TextStyle(fontSize = 16.sp),
+                    modifier = Modifier.padding(bottom = 8.dp)
+                )
+                // 描述date
+                Text(
+                    text = tweet.date?: "",
                     style = TextStyle(fontSize = 16.sp),
                     modifier = Modifier.padding(bottom = 8.dp)
                 )
@@ -104,6 +126,13 @@ class ComposeTweetsActivity : ComponentActivity() {
     fun DefaultPreview() {
         val tweets = listOf(Tweet())
         TweetsList(tweets)
+    }
+
+
+    private fun filterTweets(tweets: List<Tweet>): List<Tweet> {
+        // 按日期降序排列
+        val sortedTweets = tweets.sortedByDescending { it.date?.toLongOrNull() ?: 0 }
+        return sortedTweets.filter { it.content?.contains("error", ignoreCase = true) != true }
     }
 
 
