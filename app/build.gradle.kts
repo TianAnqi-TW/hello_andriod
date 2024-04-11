@@ -117,11 +117,10 @@ dependencies {
     testImplementation(libs.mockito.kotlin)
     testImplementation(libs.androidx.core.testing)
     testImplementation(libs.kotlinx.coroutines.test)
-    testImplementation("org.robolectric:robolectric:4.12")
+    testImplementation(libs.robolectric.v412)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    // Espresso 测试依赖项
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
-    androidTestImplementation("androidx.test.espresso:espresso-contrib:3.4.0")
-    androidTestImplementation("androidx.test.ext:junit-ktx:1.1.3")
+    androidTestImplementation(libs.androidx.espresso.core.v340)
+    androidTestImplementation(libs.androidx.espresso.contrib)
+    androidTestImplementation(libs.androidx.junit.ktx)
 }
