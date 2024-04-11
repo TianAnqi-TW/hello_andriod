@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -21,6 +22,8 @@ import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -92,6 +95,9 @@ class ComposeTweetsActivity : ComponentActivity() {
     @Composable
     fun TweetItem(tweet: Tweet) {
         var showDialog by remember { mutableStateOf(false) }
+        var isEditingComment by remember { mutableStateOf(false) }
+        var editedComment by remember { mutableStateOf(tweet.content ?: "") }
+
         Row(modifier = Modifier.padding(16.dp)) {
             // 头像
             val painter = rememberImagePainter(
@@ -125,11 +131,36 @@ class ComposeTweetsActivity : ComponentActivity() {
                 )
 
                 // 描述内容
-                Text(
-                    text = tweet.content ?: "",
-                    style = MaterialTheme.typography.bodyLarge,
-                    modifier = Modifier.padding(bottom = 8.dp)
-                )
+                if (isEditingComment) {
+                    TextField(
+                        value = editedComment,
+                        onValueChange = { editedComment = it },
+                        modifier = Modifier.padding(bottom = 8.dp)
+                    )
+
+                    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.End) {
+                        TextButton(onClick = { isEditingComment = false }) {
+                            Text(text = "Cancel")
+                        }
+                        Spacer(modifier = Modifier.width(16.dp))
+                        TextButton(onClick = {
+                            // 保存编辑结果
+                            isEditingComment = false
+                            // 执行保存操作，更新原始 Tweet 对象的评论内容
+                            tweet.content = editedComment
+                        }) {
+                            Text(text = "Save")
+                        }
+                    }
+                } else {
+                    Text(
+                        text = tweet.content ?: "",
+                        style = MaterialTheme.typography.bodyLarge,
+                        modifier = Modifier
+                            .padding(bottom = 8.dp)
+                            .clickable { isEditingComment = true } // 点击文本时切换到编辑模式
+                    )
+                }
                 // 描述date
                 Text(
                     text = tweet.date?: "",
